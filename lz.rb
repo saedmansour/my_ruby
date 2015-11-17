@@ -1,16 +1,12 @@
-# Algo steps (copied from Wikipedia)
-# 1. Initialize the dictionary to contain all strings of length one.
-# 2. Find the longest string W in the dictionary that matches the current input.
-# 3. Emit the dictionary index for W to output and remove W from the input.
-# 4. Add W followed by the next symbol in the input to the dictionary.
-# 5. Go to Step 2.
 
 
+# algo steps
 # Initialize the dictionary to contain all blocks of length one (D={a,b}).
 # Search for the longest block W which has appeared in the dictionary.
 # Encode W by its index in the dictionary.
 # Add W followed by the first symbol of the next block to the dictionary.
 # Go to Step 2.
+
 
 
 
@@ -62,7 +58,7 @@ def LZ_decompress(uncompressed)
 	end
 
 	#take care of last sequence
-	result << dictionary[current_sequence] unless current_sequence.empty?
+	result << dict[current_sequence] unless current_sequence.empty?
 	result
 end
 
@@ -74,9 +70,9 @@ end
 require 'nokogiri'
 require 'open-uri'
 
-doc = Nokogiri::HTML(open('http://www.saedmansour.com/cv'))
+doc = Nokogiri::HTML(open('http://www.saedmansour.com/cv')).text
 
-result = LZW_decompress(doc)
+result = LZ_decompress(doc)
 
-
+puts result
 
